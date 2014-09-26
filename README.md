@@ -1,0 +1,4 @@
+encapsulated
+============
+
+Test repository
