@@ -16,6 +16,7 @@ class WebViewController: UIViewController, WKNavigationDelegate
     var webView: WKWebView!
     var webViewLoaded = false
     var urlToLoad: String?
+    var identifier = 1
     
     
     // MARK: ViewController methods
@@ -52,15 +53,16 @@ class WebViewController: UIViewController, WKNavigationDelegate
         self.webView.navigationDelegate = self
     }
     
-//    override func viewDidDisappear(animated: Bool)
-//    {
-//        super.viewDidDisappear(animated)
-//        
-//        // Hack to reload right content on back action
-//        if self.urlToLoad != nil {
-//            self.webView.loadRequest(createUrlRequest(self.urlToLoad))
-//        }
-//    }
+    override func viewDidDisappear(animated: Bool)
+    {
+        super.viewDidDisappear(animated)
+        
+        // Hack to reload right content on back action
+        if self.urlToLoad != nil {
+            self.webViewLoaded = false
+            self.webView.loadRequest(createUrlRequest(self.urlToLoad))
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -80,41 +82,30 @@ class WebViewController: UIViewController, WKNavigationDelegate
     
     func webView(webView: WKWebView!, decidePolicyForNavigationAction navigationAction: WKNavigationAction!, decisionHandler: ((WKNavigationActionPolicy) -> Void)!)
     {
-        println("POLICY ACTION : \(webView.URL.absoluteString?)")
+        println("POLICY REQUEST for WebVC \(self.identifier): \(navigationAction.request.URL.absoluteString)")
         
-        if self.webViewLoaded
+        // Check path containing Qapa Root URL or not
+        if self.webViewLoaded && self.urlToLoad != navigationAction.request.URL.absoluteString && navigationAction.request.URL.absoluteString?.rangeOfString(qapaMobileRootUrl, options: nil, range: nil, locale: NSLocale.currentLocale()) != nil
         {
             // Cancel webview navigation
             decisionHandler(WKNavigationActionPolicy.Cancel)
             self.webView.stopLoading()
             
-//            // Push new webview controller to  navigation controller
-//            let webVC = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as WebViewController
-//            webVC.urlToLoad = webView.URL.absoluteString
-//            self.navigationController?.pushViewController(webVC, animated: true)
+            // Push new webview controller to  navigation controller
+            let webVC = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as WebViewController
+            webVC.urlToLoad = navigationAction.request.URL.absoluteString
+            webVC.identifier++
+            self.navigationController?.pushViewController(webVC, animated: true)
         }
             
         else {
             decisionHandler(WKNavigationActionPolicy.Allow)
         }
-        
     }
     
     func webView(webView: WKWebView!, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse!, decisionHandler: ((WKNavigationResponsePolicy) -> Void)!) {
         decisionHandler(WKNavigationResponsePolicy.Allow)
-        println("POLICY RESPONSE : \(webView.URL.absoluteString?)")
-    }
-    
-    func webView(webView: WKWebView!, didCommitNavigation navigation: WKNavigation!) {
-        println("DID COMMIT NAVIGATION: \(webView.URL.absoluteString?)")
-    }
-    
-    func webView(webView: WKWebView!, didStartProvisionalNavigation navigation: WKNavigation!) {
-        println("DID START PROVISIONAL NAVIGATION: \(webView.URL.absoluteString?)")
-    }
-    
-    func webView(webView: WKWebView!, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        println("DID RECEIVE SERVER REDIRECT: \(webView.URL.absoluteString?)")
+        println("POLICY RESPONSE  for WebVC \(self.identifier): \(navigationResponse.response.URL?.absoluteString)")
     }
 }
 
