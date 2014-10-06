@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		10CE79AE57C84C08AFF03F6F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F5EEB7C3623380E3A0FD06 /* libPods.a */; };
+		4BC7B20919E2A85C00F6821C /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC7B20819E2A85C00F6821C /* Util.swift */; };
 		933BFDBE03218B052EFFA52B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F5EEB7C3623380E3A0FD06 /* libPods.a */; };
 		EDC7B2FA19E1F723008DC54A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7B2F919E1F723008DC54A /* AppDelegate.swift */; };
-		EDC7B2FC19E1F723008DC54A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7B2FB19E1F723008DC54A /* ViewController.swift */; };
+		EDC7B2FC19E1F723008DC54A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7B2FB19E1F723008DC54A /* WebViewController.swift */; };
 		EDC7B2FF19E1F723008DC54A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDC7B2FD19E1F723008DC54A /* Main.storyboard */; };
 		EDC7B30119E1F723008DC54A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC7B30019E1F723008DC54A /* Images.xcassets */; };
-		EDC7B30419E1F723008DC54A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC7B30219E1F723008DC54A /* LaunchScreen.xib */; };
 		EDC7B31019E1F723008DC54A /* QapaEncapsulatedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7B30F19E1F723008DC54A /* QapaEncapsulatedTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,16 +28,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4BC7B20819E2A85C00F6821C /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		7C2472D869A46828BC37A1D9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		82F5EEB7C3623380E3A0FD06 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B571D8AB56E37F39235C3C35 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EDC7B2F419E1F723008DC54A /* QapaEncapsulated.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QapaEncapsulated.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC7B2F819E1F723008DC54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDC7B2F919E1F723008DC54A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EDC7B2FB19E1F723008DC54A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDC7B2FB19E1F723008DC54A /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		EDC7B2FE19E1F723008DC54A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EDC7B30019E1F723008DC54A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		EDC7B30319E1F723008DC54A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EDC7B30919E1F723008DC54A /* QapaEncapsulatedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QapaEncapsulatedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC7B30E19E1F723008DC54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDC7B30F19E1F723008DC54A /* QapaEncapsulatedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QapaEncapsulatedTests.swift; sourceTree = "<group>"; };
@@ -64,6 +64,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4BC7B20519E2A7F900F6821C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4BC7B20819E2A85C00F6821C /* Util.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		4BC7B20619E2A80400F6821C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EDC7B2FB19E1F723008DC54A /* WebViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		D2BF984B45E3C066BEC90756 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,10 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				EDC7B2F919E1F723008DC54A /* AppDelegate.swift */,
-				EDC7B2FB19E1F723008DC54A /* ViewController.swift */,
-				EDC7B2FD19E1F723008DC54A /* Main.storyboard */,
-				EDC7B30019E1F723008DC54A /* Images.xcassets */,
-				EDC7B30219E1F723008DC54A /* LaunchScreen.xib */,
+				4BC7B20619E2A80400F6821C /* ViewControllers */,
+				4BC7B20519E2A7F900F6821C /* Util */,
 				EDC7B2F719E1F723008DC54A /* Supporting Files */,
 			);
 			path = QapaEncapsulated;
@@ -118,6 +132,8 @@
 		EDC7B2F719E1F723008DC54A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EDC7B2FD19E1F723008DC54A /* Main.storyboard */,
+				EDC7B30019E1F723008DC54A /* Images.xcassets */,
 				EDC7B2F819E1F723008DC54A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -225,7 +241,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDC7B2FF19E1F723008DC54A /* Main.storyboard in Resources */,
-				EDC7B30419E1F723008DC54A /* LaunchScreen.xib in Resources */,
 				EDC7B30119E1F723008DC54A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +322,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDC7B2FC19E1F723008DC54A /* ViewController.swift in Sources */,
+				EDC7B2FC19E1F723008DC54A /* WebViewController.swift in Sources */,
+				4BC7B20919E2A85C00F6821C /* Util.swift in Sources */,
 				EDC7B2FA19E1F723008DC54A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,14 +353,6 @@
 				EDC7B2FE19E1F723008DC54A /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EDC7B30219E1F723008DC54A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDC7B30319E1F723008DC54A /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
