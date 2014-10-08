@@ -10,6 +10,7 @@
 		10CE79AE57C84C08AFF03F6F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F5EEB7C3623380E3A0FD06 /* libPods.a */; };
 		4BC7B20919E2A85C00F6821C /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC7B20819E2A85C00F6821C /* Util.swift */; };
 		933BFDBE03218B052EFFA52B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F5EEB7C3623380E3A0FD06 /* libPods.a */; };
+		ED09029519E5CF2500A5B879 /* SplashscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09029419E5CF2500A5B879 /* SplashscreenViewController.swift */; };
 		EDC7B2FA19E1F723008DC54A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7B2F919E1F723008DC54A /* AppDelegate.swift */; };
 		EDC7B2FC19E1F723008DC54A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7B2FB19E1F723008DC54A /* WebViewController.swift */; };
 		EDC7B2FF19E1F723008DC54A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDC7B2FD19E1F723008DC54A /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		7C2472D869A46828BC37A1D9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		82F5EEB7C3623380E3A0FD06 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B571D8AB56E37F39235C3C35 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		ED09029419E5CF2500A5B879 /* SplashscreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashscreenViewController.swift; sourceTree = "<group>"; };
 		EDC7B2F419E1F723008DC54A /* QapaEncapsulated.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QapaEncapsulated.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC7B2F819E1F723008DC54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDC7B2F919E1F723008DC54A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				EDC7B2FB19E1F723008DC54A /* WebViewController.swift */,
+				ED09029419E5CF2500A5B879 /* SplashscreenViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				EDC7B2FC19E1F723008DC54A /* WebViewController.swift in Sources */,
 				4BC7B20919E2A85C00F6821C /* Util.swift in Sources */,
+				ED09029519E5CF2500A5B879 /* SplashscreenViewController.swift in Sources */,
 				EDC7B2FA19E1F723008DC54A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

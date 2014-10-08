@@ -16,7 +16,8 @@ class WebViewController: UIViewController, WKNavigationDelegate
     var webView: WKWebView!
     var webViewLoaded = false
     var urlToLoad: String?
-    var identifier = 1
+    var contentLoaded : String?
+    var identifier = 0
     
     
     // MARK: ViewController methods
@@ -34,19 +35,19 @@ class WebViewController: UIViewController, WKNavigationDelegate
         
         // Webview layout
         self.webView = WKWebView(frame: self.view.bounds, configuration: configuration)
-        if self.urlToLoad == nil {
-            self.urlToLoad = "\(qapaMobileRootUrl)\(qapaMobilePath)\(qapaHomePath)"
-            
-            // TODO : Loading webview mechanism with AFNetworking & closure success
-            //            UIWebView().loadRequest(request, progress: nil, success: ({(response: NSHTTPURLResponse!, html:String!) in
-            //                println(html)
-            //                self.webView.loadHTMLString(html, baseURL: request.URL)
-            //                return nil}), failure: nil)
-            
-        }
+//        if self.urlToLoad == nil {
+//            self.urlToLoad = "\(qapaMobileRootUrl)\(qapaMobilePath)\(qapaHomePath)"
+//        }
         
         // Loading webview
-        self.webView.loadRequest(createUrlRequest(self.urlToLoad!))
+        if self.contentLoaded !=  nil {
+            let request = createUrlRequest("\(qapaMobileRootUrl)\(qapaMobilePath)\(qapaHomePath)")
+            self.webView.loadHTMLString(self.contentLoaded, baseURL: request.URL.baseURL)
+        }
+        
+        else {
+            self.webView.loadRequest(createUrlRequest(self.urlToLoad!))
+        }
         
         // View controller & webview association + delegate definition
         self.view = self.webView
