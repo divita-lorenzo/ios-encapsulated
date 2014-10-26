@@ -16,7 +16,6 @@ class WebViewController: UIViewController, WKNavigationDelegate
     var webView: WKWebView!
     var webViewLoaded = false
     var urlToLoad: String?
-    var contentLoaded : String?
     var identifier = 0
     
     
@@ -33,25 +32,20 @@ class WebViewController: UIViewController, WKNavigationDelegate
         let configuration = WKWebViewConfiguration()
         configuration.preferences = preferences
         
-        // Webview layout
-        self.webView = WKWebView(frame: self.view.bounds, configuration: configuration)
-//        if self.urlToLoad == nil {
-//            self.urlToLoad = "\(qapaMobileRootUrl)\(qapaMobilePath)\(qapaHomePath)"
-//        }
-        
-        // Loading webview
-        if self.contentLoaded !=  nil {
-            let request = createUrlRequest("\(qapaMobileRootUrl)\(qapaMobilePath)\(qapaHomePath)")
-            self.webView.loadHTMLString(self.contentLoaded, baseURL: request.URL.baseURL)
-        }
-        
-        else {
-            self.webView.loadRequest(createUrlRequest(self.urlToLoad!))
+        if self.webView == nil
+        {
+            // Webview layout
+            self.webView = WKWebView(frame: self.view.bounds, configuration: configuration)
         }
         
         // View controller & webview association + delegate definition
         self.view = self.webView
         self.webView.navigationDelegate = self
+        
+        // Loading webview
+        if !self.webViewLoaded {
+            self.webView.loadRequest(createUrlRequest(self.urlToLoad!))
+        }
     }
     
     override func viewDidDisappear(animated: Bool)
@@ -75,7 +69,7 @@ class WebViewController: UIViewController, WKNavigationDelegate
     
     func webView(webView: WKWebView!, didFinishNavigation navigation: WKNavigation!)
     {
-        println("DID FINISH NAVIGATION: \(webView.URL.absoluteString?)")
+        println("DID FINISH NAVIGATION: \(webView.URL?.absoluteString?)")
         
         // Flag for webview marked as loaded
         self.webViewLoaded = true

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import WebKit
 
-class SplashscreenViewController: UIViewController
+class SplashscreenViewController: UIViewController, WKNavigationDelegate
 {
     // MARK: Properties
     
@@ -17,7 +18,7 @@ class SplashscreenViewController: UIViewController
     @IBOutlet weak var loadingView: UIView!
     
     var homeUrlRequest: NSURLRequest!
-    var htmlContent: String!
+    var firstWebView: WKWebView!
     
     
     // MARK: ViewController lifecycle
@@ -50,13 +51,25 @@ class SplashscreenViewController: UIViewController
                 (finished: Bool) in
                 // Loading webview mechanism with AFNetworking & closure success
                 self.homeUrlRequest = createUrlRequest("\(qapaMobileRootUrl)\(qapaMobilePath)\(qapaHomePath)")
-                UIWebView().loadRequest(self.homeUrlRequest, progress: nil, success: ({
-                    (response: NSHTTPURLResponse!, html:String!) in
-                    println(html)
-                    self.htmlContent = html
-                    self.performSegueWithIdentifier("splashToWebViewSegue", sender: nil)
-                    return nil
-                }), failure: nil)
+//                UIWebView().loadRequest(self.homeUrlRequest, progress: nil, success: ({
+//                    (response: NSHTTPURLResponse!, html:String!) in
+//                    println(html)
+//                    self.htmlContent = html
+//                    self.performSegueWithIdentifier("splashToWebViewSegue", sender: nil)
+//                    return nil
+//                }), failure: nil)
+                // Webview configuration
+                let preferences = WKPreferences()
+                preferences.javaScriptCanOpenWindowsAutomatically = false
+                
+                let configuration = WKWebViewConfiguration()
+                configuration.preferences = preferences
+                
+                // Webview layout
+                self.firstWebView = WKWebView(frame: self.view.bounds, configuration: configuration)
+                self.firstWebView.navigationDelegate = self
+                
+                self.firstWebView.loadRequest(self.homeUrlRequest)
             }))
         }))
     }
@@ -66,7 +79,15 @@ class SplashscreenViewController: UIViewController
         // Destination -> First WebViewController
         let navigationController = segue.destinationViewController as UINavigationController
         let webViewController = navigationController.childViewControllers[0] as WebViewController
-        webViewController.contentLoaded = self.htmlContent
         webViewController.identifier = 1
+        webViewController.webView = self.firstWebView
+        webViewController.webViewLoaded = true
+        webViewController.urlToLoad = self.homeUrlRequest.URL.absoluteString
+    }
+    
+    func webView(webView: WKWebView!, didFinishNavigation navigation: WKNavigation!)
+    {
+        println("DID FINISH NAVIGATION: \(webView.URL?.absoluteString?)")
+        self.performSegueWithIdentifier("splashToWebViewSegue", sender: nil)
     }
 }

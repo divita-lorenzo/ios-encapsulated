@@ -16,5 +16,5 @@ let qapaHomePath = "/index/index"
 func createUrlRequest(urlString: String!) -> NSURLRequest
 {
     let url = NSURL(string: urlString)
-    return NSURLRequest(URL: url)
+    return NSURLRequest(URL: url!)
 }
